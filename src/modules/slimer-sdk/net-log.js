@@ -622,7 +622,8 @@ const traceResponse = function(id, request) {
         return response;
     }
 
-    if (request.status) { // network error
+    if (request.status &&
+       !(request.status == Cr.NS_BINDING_REDIRECTED && (parseInt(response.status/100) == 3))) { // network error
         return response;
     }
 
